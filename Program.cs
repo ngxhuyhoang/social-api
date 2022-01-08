@@ -1,3 +1,4 @@
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using social_api.Contexts;
 
@@ -7,7 +8,11 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+  var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+  options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
   options.UseMySql(connectionString, serverVersion);

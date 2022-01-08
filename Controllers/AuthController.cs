@@ -7,6 +7,12 @@ namespace social_api.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
+  [HttpGet]
+  public IActionResult Get()
+  {
+    return Ok("Hello World");
+  }
+
   [HttpPost("login")]
   public IActionResult Login() => Ok("Hello World");
 

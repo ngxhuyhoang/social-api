@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace social_api.Controllers;
 
@@ -13,5 +14,6 @@ public class AuthController : ControllerBase
   public IActionResult Register() => Ok("Hello World");
 
   [HttpPost("logout")]
+  [Authorize]
   public IActionResult Logout() => Ok("Hello World");
 }

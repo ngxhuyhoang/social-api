@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  # MySQL
+  database:
+    platform: linux/x86_64
+    image: mysql:8.0.27
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=dev_social_mock_api
+    ports:
+      - 3306:3306
